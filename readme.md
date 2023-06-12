@@ -26,7 +26,7 @@
 - mel_lab_back
 
 ## Initialisation du projet :
-($ cd \mel_lab_back\)
+($ cd mel_lab_back)
 - npm init
 
 ## Installation des dépendances :
@@ -57,6 +57,10 @@
     # dotenv
     #
     .env
+
+    # DB_Queries.sql
+    #
+    DB_Queries.sql
     ```
 
 ## Initialisation de Git :
@@ -69,7 +73,42 @@
 - $ git push -u origin main
 
 ## SSMS database (<i>SQL Server Management Studio</i>):
-- connection
-- click-droit sur "Databases",
-- "New Database",
-- lui donner un nom et la DB est créée
+* 1ère étape:
+    - Connection
+    - Click-droit sur "Databases",
+    - "New Database",
+    - Lui donner un nom et la DB est créée
+* 2ème étape:
+    - Click-droit sur la DB,
+    - "New Query"
+* 3ème étape:
+    - Créer la table =>
+    ```
+    CREATE TABLE users ( 
+        id int IDENTITY (1,1),
+        firstname varchar(50),
+        lastname varchar (50),
+        phoneNumber varchar(50),
+        email varchar(50),
+        username varchar(50),
+        password varchar (100),
+        jwt VARCHAR(500),
+        PRIMARY KEY (id)
+    )
+    ```
+* 4ème étape:
+    - Test manuel (<i>optionnel</i>) =>
+    ```
+    INSERT INTO users VALUES (
+        'Prenom',
+        'Nom',
+        '0123456789',
+        'e@mail.com',
+        'psd',
+        'pwd',
+        null
+    )
+    ```
+    ```
+    SELECT * FROM users
+    ```

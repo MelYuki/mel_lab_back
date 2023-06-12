@@ -6,3 +6,7 @@ npm-debug.log
 # dotenv
 #
 .env
+
+# DB_Queries.sql
+#
+DB_Queries.sql
