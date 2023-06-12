@@ -64,12 +64,10 @@
     ```
 - app.js (<i>fichier principal</i>)
 - controllers/
-    * controller.js
     * user.controller.js
 - db/
     * database.js
 - models/
-    * model.js
     * user.model.js
 - router/
     * router.js
@@ -98,9 +96,6 @@
     ```
     CREATE TABLE users ( 
         id int IDENTITY (1,1),
-        firstname varchar(50),
-        lastname varchar (50),
-        phoneNumber varchar(50),
         email varchar(50),
         username varchar(50),
         password varchar (100),
@@ -112,11 +107,8 @@
     - Test manuel (<i>optionnel</i>) =>
     ```
     INSERT INTO users VALUES (
-        'Prenom',
-        'Nom',
-        '0123456789',
         'e@mail.com',
-        'psd',
+        'user',
         'pwd',
         null
     )
