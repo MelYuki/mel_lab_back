@@ -33,7 +33,7 @@
 - npm i nodemon --save-dev
 - npm i express bcrypt dotenv jsonwebtoken mssql
 
-## Création de fichiers (<i>Dans le dossier racine</i>) :
+## Création des fichiers et des dossiers (<i>Dans le dossier racine</i>) :
 - .env:
     ```
     # Infos server
@@ -62,6 +62,18 @@
     #
     DB_Queries.sql
     ```
+- app.js (<i>fichier principal</i>)
+- controllers/
+    * controller.js
+    * user.controller.js
+- db/
+    * database.js
+- models/
+    * model.js
+    * user.model.js
+- router/
+    * router.js
+    * user.router.js
 
 ## Initialisation de Git :
 - Création du repo github
