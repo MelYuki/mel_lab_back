@@ -69,7 +69,7 @@
     * database.js
 - models/
     * user.model.js
-- router/
+- routers/
     * router.js
     * user.router.js
 
