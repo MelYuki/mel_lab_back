@@ -71,7 +71,6 @@
     * user.model.js
 - routers/
     * router.js
-    * user.router.js
 
 ## Initialisation de Git :
 - Création du repo github
@@ -104,7 +103,7 @@
     )
     ```
 * 4ème étape:
-    - Test manuel (<i>optionnel</i>) =>
+    - Insert manuel (<i>optionnel</i>) =>
     ```
     INSERT INTO users VALUES (
         'e@mail.com',

@@ -5,21 +5,6 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 const UserController = {
-    getAll: async(req, res) => {
-        try {
-            await sql.connect(sqlConfig)
-            const result = await UserModel.getAll()
-            if(result) {
-                console.log(result)
-                res.sendStatus(200)
-            }
-        }
-        catch(err) {
-            console.error(err)
-            res.status(404)
-        }
-    },
-
     register: async (req, res) => {
         try {
             await sql.connect(sqlConfig)
@@ -44,21 +29,26 @@ const UserController = {
             await sql.connect(sqlConfig)
             const { email, password } = req.body
 
-            const user = await sql.query `SELECT * FROM users WHERE email=${email}`
+            const userQuery = await sql.query `SELECT * FROM users WHERE email=${email}`
+            // console.log(password, user.password)
+            // console.log(user)
+            const user = userQuery.recordset[0]
 
             if(!user) {
                 console.log("No such user exists!")
                 res.sendStatus(404)
             }
 
-            if(password) {
-                const isValid = bcrypt.compareSync(password, user.password)
+            const isValid = bcrypt.compareSync(password, user.password)
+            // console.log(isValid)
 
-                if(!isValid) {
-                    return res.send("Invalid Password!").status(401)
-                }
+            if(!isValid) {
+                return res.send("Invalid Password!").status(401)
             }
 
+            if (user && isValid) {
+                res.status(200).json({user})
+            }
         }
         catch(err) {
             console.log(err)
