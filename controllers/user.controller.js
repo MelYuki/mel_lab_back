@@ -37,6 +37,33 @@ const UserController = {
             console.error(err)
             res.sendStatus(404)
         }
+    },
+
+    login: async (req, res) => {
+        try {
+            await sql.connect(sqlConfig)
+            const { email, password } = req.body
+
+            const user = await sql.query `SELECT * FROM users WHERE email=${email}`
+
+            if(!user) {
+                console.log("No such user exists!")
+                res.sendStatus(404)
+            }
+
+            if(password) {
+                const isValid = bcrypt.compareSync(password, user.password)
+
+                if(!isValid) {
+                    return res.send("Invalid Password!").status(401)
+                }
+            }
+
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(404)
+        }
     }
 }
 
