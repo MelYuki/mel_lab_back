@@ -30,7 +30,7 @@ const UserController = {
             const result = await UserModel.register({email, username, hashedPwd})
 
             if(result) {
-                res.sendStatus(200)
+                res.send("REGISTRED").status(200)
             }
         }
         catch(err) {

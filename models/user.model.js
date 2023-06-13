@@ -1,5 +1,4 @@
 const sql = require("mssql")
-const sqlConfig = require("../db/database")
 
 const UserModel = {
     getAll: async () => {
