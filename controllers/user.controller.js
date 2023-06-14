@@ -33,16 +33,16 @@ const UserController = {
             // console.log(password, user.password)
             // console.log(user)
             const user = userQuery.recordset[0]
-
-            if(!user) {
-                console.log("No such user exists!")
-                res.sendStatus(404)
-            }
-
             const isValid = bcrypt.compareSync(password, user.password)
-            // console.log(isValid)
+            // console.log(isValid) => false
 
-            if(!isValid) {
+            // console.log(user)
+            if(!user) {
+                // console.log(user)
+                return res.send("No such user exists!").status(401)
+            }
+            else if(isValid === false) {
+                // console.log(isValid) // => OK if false
                 return res.send("Invalid Password!").status(401)
             }
 
