@@ -20,6 +20,23 @@ const EventController = {
             console.log(err)
             res.sendStatus(404)
         }
+    },
+
+    add: async (req, res) => {
+        try {
+            await sql.connect(sqlConfig)
+            const { name, day_in, day_out, duration, desc } = req.body
+
+            const result = await EventModel.add({name, day_in, day_out, duration, desc})
+
+            if(result) {
+                res.send("ADD").status(200)
+            }
+        }
+        catch(err) {
+            console.error(err)
+            res.sendStatus(404)
+        }
     }
 }
 

@@ -9,6 +9,23 @@ const EventModel = {
         catch(err) {
             console.error(err);
         }
+    },
+
+    add: async (data) => {
+        try {
+            const { name, day_in, day_out, duration, desc } = data
+
+            const req = await sql.query `INSERT INTO events
+                (event_name, date_in, date_out, duration, description)
+                VALUES
+                (${name}, ${day_in}, ${day_out}, ${duration}, ${desc})`
+
+            return req
+        }
+        catch(err) {
+            console.error(err)
+            res.sendStatus(404)
+        }
     }
 }
 
