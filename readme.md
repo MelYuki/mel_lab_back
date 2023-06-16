@@ -64,10 +64,12 @@
     ```
 - app.js (<i>fichier principal</i>)
 - controllers/
+    * event.controller.js
     * user.controller.js
 - db/
     * database.js
 - models/
+    * event.model.js
     * user.model.js
 - routers/
     * router.js
@@ -91,7 +93,7 @@
     - Click-droit sur la DB,
     - "New Query"
 * 3ème étape:
-    - Créer la table =>
+    - Créer la table <b>"Utilisateurs"</b> =>
     ```
     CREATE TABLE users ( 
         id int IDENTITY (1,1),
@@ -112,6 +114,35 @@
         null
     )
     ```
+    - Vérifier que l'insert est ok
     ```
     SELECT * FROM users
+    ```
+* 5ème étape:
+    - Créer la table <b>"Évènements"</b> =>
+    ```
+    CREATE TABLE events ( 
+        id int IDENTITY (1,1),
+        event_name varchar (50),
+        date_in varchar (50),
+        date_out varchar (50),
+        duration varchar (100),
+        description VARCHAR (100),
+        PRIMARY KEY (id)
+    )
+    ```
+* 6ème étape:
+    - Insert manuel (<i>optionnel</i>) =>
+    ```
+    INSERT INTO events VALUES (
+        'Test event',
+        '05/06/2023',
+        '19/06/2023',
+        '14 jours',
+        'Ceci est une entrée manuelle de test'
+    )
+    ```
+    - Vérifier que l'insert est ok
+    ```
+    SELECT * FROM events
     ```
