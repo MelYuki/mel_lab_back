@@ -7,7 +7,20 @@ const EventModel = {
             return req
         }
         catch(err) {
-            console.error(err);
+            console.error(err)
+            res.sendStatus(404)
+        }
+    },
+
+    getById: async (data) => {
+        try {
+            const { id } = data
+            const req = await sql.query `SELECT * FROM events WHERE id=${id}`
+            return req
+        }
+        catch(err) {
+            console.error(err)
+            res.sendStatus(404)
         }
     },
 

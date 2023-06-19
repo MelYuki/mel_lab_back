@@ -22,6 +22,24 @@ const EventController = {
         }
     },
 
+    getById: async (req, res) => {
+        try {
+            const { id } = req.params
+
+            await sql.connect(sqlConfig)
+            const result = await EventModel.getById({id})
+            const content = result.recordset
+            if(result) {
+                res.status(200).json({content})
+            }
+            return content
+        }
+        catch(err) {
+            console.log(err)
+            res.sendStatus(404)
+        }
+    },
+
     add: async (req, res) => {
         try {
             await sql.connect(sqlConfig)

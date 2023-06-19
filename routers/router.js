@@ -8,6 +8,7 @@ UserRouter.post("/login", UserController.login)
 UserRouter.post("/register", UserController.register)
 
 UserRouter.get("/list", EventController.getAll)
+UserRouter.get("/details/:id", EventController.getById)
 UserRouter.post("/add", EventController.add)
 
 module.exports = UserRouter
